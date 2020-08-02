@@ -11,6 +11,10 @@
   <body >
     <div ng-controller="AlbumController as album">
         {{album.number}}
+        <div ng-if="album.number > 100">
+            Its a big number
+        </div>
+        <button ng-click="album.getCard()">Get Cards</button>
     </div>
 
 

@@ -6,5 +6,17 @@ app.controller('AlbumController', ['$http', function($http){
     // ================================== //
     //        Get All the Cards           //
     // ================================== //
-    this.number = 613
+    this.number = 6
+    this.getCard = function(){
+        $http({
+            method:'GET',
+            url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
+        })
+        .then(function(res){
+            console.log(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 }]);// colosing the Album Controller 
