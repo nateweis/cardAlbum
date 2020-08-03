@@ -8,9 +8,10 @@
     <script src="./js/app.js"></script>
     <link rel="stylesheet" href="./css/main.css">
   </head>
-  <body >
+  <body ng-controller="AuthController as auth">
     <div ng-controller="AlbumController as album">
         
+      <span ng-if="auth.loggedIn"> <!--Only show card stuff if logged in-->
         <button ng-click="album.getCards('Legend%20of%20Blue%20Eyes%20White%20Dragon')">The Legend of Blue Eyes</button>
         <button ng-click="album.getCards('Metal%20Raiders')">Metal Raiders </button>
 
@@ -19,6 +20,12 @@
                 <li ng-repeat="card in album.allCards"> {{card.name}} </li>
             </ul>
         </div>
+      </span>
+
+      <span ng-if="!auth.loggedIn" >
+        <button ng-click="auth.changeLoggin()" >Log In</button>
+      </span>
+        
     </div>
 
 
