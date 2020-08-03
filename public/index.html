@@ -12,14 +12,8 @@
     <div ng-controller="AlbumController as album">
         
       <span ng-if="auth.loggedIn"> <!--Only show card stuff if logged in-->
-        <button ng-click="album.getCards('Legend%20of%20Blue%20Eyes%20White%20Dragon')">The Legend of Blue Eyes</button>
-        <button ng-click="album.getCards('Metal%20Raiders')">Metal Raiders </button>
-
-        <div ng-if="album.allCards.length > 1"> 
-            <ul>
-                <li ng-repeat="card in album.allCards"> {{card.name}} </li>
-            </ul>
-        </div>
+        <div ng-include="'partials/Nav.html'" ng-if="album.includePath !== 'partials/Home.html' " ></div>
+        <div ng-include="album.includePath" ></div>
       </span>
 
       <span ng-if="!auth.loggedIn" >

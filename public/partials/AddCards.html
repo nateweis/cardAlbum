@@ -1,0 +1,8 @@
+<button ng-click="album.getCards('Legend%20of%20Blue%20Eyes%20White%20Dragon')">The Legend of Blue Eyes</button>
+<button ng-click="album.getCards('Metal%20Raiders')">Metal Raiders </button>
+
+<div ng-if="album.allCards.length > 1"> 
+    <ul>
+        <li ng-repeat="card in album.allCards"> {{card.name}} </li>
+    </ul>
+</div>

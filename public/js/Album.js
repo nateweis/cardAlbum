@@ -1,10 +1,10 @@
 export const album =  ['$http', function($http){
     //get the this
     const ctrl = this;
-    // ================================== //
-    //       Current List of Cards        //
-    // ================================== //
+    
     this.allCards = [];
+    this.includePath = 'partials/Home.html'
+    this.changeIncludePath = path => ctrl.includePath = `partials/${path}.html`
 
     // ================================== //
     //        Get All the Cards           //
