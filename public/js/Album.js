@@ -17,7 +17,7 @@ export const album =  ['$http', function($http){
             url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?cardset=' + pack
         })
         .then(function(res){
-            console.log(res.data.data)
+            // console.log(res.data.data)
             ctrl.allCards = res.data.data
         })
         .catch((err) => {
@@ -31,14 +31,26 @@ export const album =  ['$http', function($http){
     this.addCardToAlbum = function(card){
         let addCard = true;
         this.yourCards.forEach(c => {
-            if(c.id === card.id){
+            if(c.api_id === card.id){
                 c.ammount++
                 addCard = false
             }
         });
         if(addCard){
-            let newCard = card
-            newCard.ammount = 1;
+            const newCard = {
+                atk: card.atk,
+                attribute: card.attribute,
+                card_images : card.card_images,
+                def: card.def,
+                desc: card.desc,
+                api_id : card.id,
+                level : card.level,
+                name: card.name,
+                race: card.race,
+                type: card.type,
+                ammount : 1
+            }
+            
             ctrl.yourCards.push(newCard)
         }
     }
