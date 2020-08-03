@@ -2,21 +2,28 @@ const app = angular.module('CardAlbum', [])
 
 app.controller('AlbumController', ['$http', function($http){
     //get the this
-    const authCtrl = this;
+    const ctrl = this;
+    // ================================== //
+    //       Current List of Cards        //
+    // ================================== //
+    this.allCards = [];
+
     // ================================== //
     //        Get All the Cards           //
     // ================================== //
-    this.number = 6
-    this.getCard = function(){
+
+    this.getCards = function(pack){
         $http({
             method:'GET',
-            url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
+            url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?cardset=' + pack
         })
         .then(function(res){
-            console.log(res.data)
+            console.log(res.data.data)
+            ctrl.allCards = res.data.data
         })
         .catch((err) => {
             console.log(err)
         })
     }
+
 }]);// colosing the Album Controller 
