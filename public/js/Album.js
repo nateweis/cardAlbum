@@ -3,6 +3,7 @@ export const album =  ['$http', function($http){
     const ctrl = this;
     
     this.allCards = [];
+    this.yourCards = [];
     this.includePath = 'partials/Home.html'
     this.changeIncludePath = path => ctrl.includePath = `partials/${path}.html`
 
@@ -23,5 +24,24 @@ export const album =  ['$http', function($http){
             console.log(err)
         })
     }
+
+    // ================================== //
+    //        Add to Your Cards           //
+    // ================================== //
+    this.addCardToAlbum = function(card){
+        let addCard = true;
+        this.yourCards.forEach(c => {
+            if(c.id === card.id){
+                c.ammount++
+                addCard = false
+            }
+        });
+        if(addCard){
+            let newCard = card
+            newCard.ammount = 1;
+            ctrl.yourCards.push(newCard)
+        }
+    }
+
 
 }]
