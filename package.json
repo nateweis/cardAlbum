@@ -1,7 +1,9 @@
 {
   "name": "cardalbum",
   "version": "1.0.0",
-  "engines": {"node":"12.4.0"},
+  "engines": {
+    "node": "12.4.0"
+  },
   "description": "yu gi oh album app",
   "main": "server.js",
   "scripts": {
@@ -20,7 +22,10 @@
   "homepage": "https://github.com/nateweis/cardAlbum#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-session": "^1.17.1"
+    "express-session": "^1.17.1",
+    "pg-promise": "^10.5.8"
   }
 }

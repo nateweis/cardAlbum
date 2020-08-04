@@ -54,7 +54,7 @@ export const album =  ['$http', function($http){
             newCard.card_images[1] = card.card_images[0].image_url_small
             
             ctrl.yourCards.push(newCard)
-            console.log(ctrl.yourCards)
+            // console.log(ctrl.yourCards)
         }
     }
 
