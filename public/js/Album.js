@@ -8,9 +8,20 @@ export const album =  ['$http', function($http){
     this.changeIncludePath = path => ctrl.includePath = `partials/${path}.html`
 
     // ================================== //
-    //        Get All the Cards           //
+    //         Get User's Cards           //
     // ================================== //
 
+    this.getUsersCards = function(){
+        $http({
+            method: 'GET',
+            url: '/cards'
+        })
+    }
+
+    // ================================== //
+    //        Get All the Cards           //
+    // ================================== //
+    
     this.getCards = function(pack){
         $http({
             method:'GET',

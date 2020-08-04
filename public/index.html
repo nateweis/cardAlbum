@@ -11,12 +11,12 @@
   <body ng-controller="AuthController as auth">
     <div ng-controller="AlbumController as album">
         
-      <span ng-if="auth.loggedIn"> <!--Only show card stuff if logged in-->
+      <span ng-if="auth.currentUser.id"> <!--Only show card stuff if logged in-->
         <div ng-include="'partials/Nav.html'" ng-if="album.includePath !== 'partials/Home.html' " ></div>
         <div ng-include="album.includePath" ></div>
       </span>
 
-      <span ng-if="!auth.loggedIn" >
+      <span ng-if="!auth.currentUser.id" >
         <button ng-click="auth.changeLoggin()" >Log In</button>
       </span>
         
