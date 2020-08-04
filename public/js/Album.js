@@ -40,7 +40,7 @@ export const album =  ['$http', function($http){
             const newCard = {
                 atk: card.atk,
                 attribute: card.attribute,
-                card_images : card.card_images,
+                card_images : [],
                 def: card.def,
                 desc: card.desc,
                 api_id : card.id,
@@ -50,8 +50,11 @@ export const album =  ['$http', function($http){
                 type: card.type,
                 ammount : 1
             }
+            newCard.card_images[0] = card.card_images[0].image_url
+            newCard.card_images[1] = card.card_images[0].image_url_small
             
             ctrl.yourCards.push(newCard)
+            console.log(ctrl.yourCards)
         }
     }
 
