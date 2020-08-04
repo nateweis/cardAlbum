@@ -17,9 +17,15 @@ const getUserInfo = (req, res) => {
     else res.json({data: {}})
 }
 
+const deleteSession = (req, res) => {
+    req.session.destroy(() => res.json({message:"logout success"}))
+}
+
+
 
 
 module.exports = {
     login,
-    getUserInfo
+    getUserInfo,
+    deleteSession
 }

@@ -5,7 +5,9 @@ export const auth = ['$http', '$window', function($http, $window){
     // Check if logged in
     $window.onload = () => {authCtrl.getUser()}
 
-    // Log In to Site
+     // ================================== //
+    //              Log in                //
+    // ================================== //
     this.changeLoggin = function(){
         $http({
             method: 'POST',
@@ -19,13 +21,27 @@ export const auth = ['$http', '$window', function($http, $window){
         .catch((err)=>{console.log(err)})
     }
 
-    // Get User information
+     // ================================== //
+     //          Get User's Info           //
+     // ================================== //
     this.getUser = function(){
         $http({
             method: 'GET',
             url: '/users'
         })
         .then(res => authCtrl.currentUser = res.data.data)
+        .catch(err => console.log(err))
+    }
+
+    // ================================== //
+    //               Log Out              //
+    // ================================== //
+    this.logOut = function(){
+        $http({
+            method: 'DELETE',
+            url: '/users'
+        })
+        .then(data => { authCtrl.currentUser = {} })
         .catch(err => console.log(err))
     }
 
