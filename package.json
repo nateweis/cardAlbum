@@ -1,6 +1,7 @@
 {
   "name": "cardalbum",
   "version": "1.0.0",
+  "engines": {"node":"12.4.0"},
   "description": "yu gi oh album app",
   "main": "server.js",
   "scripts": {
