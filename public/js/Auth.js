@@ -15,7 +15,7 @@ export const auth = ['$http', '$window', function($http, $window){
             data: {username: 'nate', password: 'nate'}
         })
         .then((res)=>{ 
-            console.log(res.data)
+            // console.log(res.data)
             authCtrl.currentUser = res.data.data
          })
         .catch((err)=>{console.log(err)})

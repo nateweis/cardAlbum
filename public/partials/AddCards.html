@@ -3,6 +3,6 @@
 
 <div ng-if="album.allCards.length > 0"> 
     <ul>
-        <li ng-repeat="card in album.allCards" ng-click="album.addCardToAlbum(card)"> {{card.name}} </li>
+        <li ng-repeat="card in album.allCards" ng-click="album.addCardToAlbum(card, auth.currentUser.id)"> {{card.name}} </li>
     </ul>
 </div>

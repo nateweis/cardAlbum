@@ -39,11 +39,12 @@ export const album =  ['$http', function($http){
     // ================================== //
     //        Add to Your Cards           //
     // ================================== //
-    this.addCardToAlbum = function(card){
+    this.addCardToAlbum = function(card, user){
         let addCard = true;
         this.yourCards.forEach(c => {
             if(c.api_id === card.id){
                 c.ammount++
+                // updateAlbum(c, user)
                 addCard = false
             }
         });
@@ -64,9 +65,18 @@ export const album =  ['$http', function($http){
             newCard.card_images[0] = card.card_images[0].image_url
             newCard.card_images[1] = card.card_images[0].image_url_small
             
-            ctrl.yourCards.push(newCard)
-            // console.log(ctrl.yourCards)
+            ctrl.yourCards.push(newCard);
+            ctrl.sendCardToBackend(newCard, user);
         }
+    }
+
+    // ================================== //
+    //        Send Card to Backend        //
+    // ================================== //
+    this.sendCardToBackend = function(card, user){
+        $http({method: 'POST', url: '/cards', data:{card, user}})
+        .then(data => console.log(data.data))
+        .catch(err => console.log(err))
     }
 
 
