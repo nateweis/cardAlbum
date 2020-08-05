@@ -18,9 +18,13 @@ const sqlNewCard = sql('../db/newCard.sql');
 ********************************************/
 
 const getUsersCards = (req, res) => {
-    console.log(req.session.currentUser)
+    // console.log(req.session.currentUser)
     // if logged in
     // grab user's db stuff and send back
+
+    console.log("==============================")
+    console.log("====== get user cards ========")
+    console.log("==============================")
 }
 
 const receviedCard = (req, res) => {

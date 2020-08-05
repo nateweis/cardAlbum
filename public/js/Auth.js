@@ -1,9 +1,12 @@
-export const auth = ['$http', '$window', function($http, $window){
+export const auth = ['$http', '$window', 'cardScopeService', function($http, $window, cardScopeService){
     const authCtrl = this
     this.currentUser = {};
 
     // Check if logged in
-    $window.onload = () => {authCtrl.getUser()}
+    $window.onload = () => {
+        authCtrl.getUser();
+        cardScopeService.activateGetCards();
+    }
 
      // ================================== //
     //              Log in                //

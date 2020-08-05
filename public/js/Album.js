@@ -1,4 +1,4 @@
-export const album =  ['$http', function($http){
+export const album =  ['$http', '$rootScope', function($http, $rootScope){
     //get the this
     const ctrl = this;
     
@@ -7,15 +7,20 @@ export const album =  ['$http', function($http){
     this.includePath = 'partials/Home.html'
     this.changeIncludePath = path => ctrl.includePath = `partials/${path}.html`
 
+    $rootScope.$on('fireFunc', ()=>ctrl.getUsersCards())
+
     // ================================== //
     //         Get User's Cards           //
     // ================================== //
 
     this.getUsersCards = function(){
-        $http({
-            method: 'GET',
-            url: '/cards'
-        })
+        // $http({
+        //     method: 'GET',
+        //     url: '/cards'
+        // })
+        console.log("==============================")
+        console.log("====== get user cards ========")
+        console.log("==============================")
     }
 
     // ================================== //
