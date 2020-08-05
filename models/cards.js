@@ -29,7 +29,7 @@ const receviedCard = (req, res) => {
     db.one('SELECT * FROM cards WHERE api_id = $1', req.body.card.api_id)
     .then(data => res.json({data, ndb: ['album'], msg: newAlbumEntry(data.id, req.body.user)}))
     .catch(err =>{
-        if(err.received === 0){ //we nee to make a new album entry
+        if(err.received === 0){
             db.one(sqlNewCard, req.body.card) 
             .then(data => res.json({data, ndb: ['album', 'card'], msg: newAlbumEntry(data.id, req.body.user) }))
             .catch(err => res.json({err, msg: 'didnt work on getting card call back info'}))
@@ -40,10 +40,12 @@ const receviedCard = (req, res) => {
 }
 
 const newAlbumEntry = (card, user) => {
+    let succesfullEntry;
+    db.none('INSERT INTO albums (card_id, user_id, ammount, favorite) VALUES($1, $2, 1, false)', [card, user])
+    .then(()=> succesfullEntry = "successfully added to album")
+    .catch(err => succesfullEntry = err)
     
-    console.log(`card id => ${card} / user id => ${user}`)
-    return "Made it to the new Album Entry maker"
-    
+    return succesfullEntry
 }
 
 
