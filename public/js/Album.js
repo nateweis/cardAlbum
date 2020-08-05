@@ -16,7 +16,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.getUsersCards = function(){
 
         $http({method: 'GET', url: '/cards'})
-        .then(data => console.log(data.data))
+        .then(data => ctrl.yourCards = data.data.cards)
         .catch(err => console.log(err))
 
     }

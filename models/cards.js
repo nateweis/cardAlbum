@@ -18,15 +18,13 @@ const sqlNewCard = sql('../db/newCard.sql');
 ********************************************/
 
 const getUsersCards = (req, res) => {
-    // console.log(req.session.currentUser)
-    // if logged in
-    // grab user's db stuff and send back
+
     if(req.session.currentUser){
         db.any('SELECT cards.*, albums.*, albums.id as album_id FROM cards JOIN albums ON cards.id = albums.card_id WHERE albums.user_id = $1', req.session.currentUser.id)
-        .then(data => { res.json({data, msg: "we got the cards"})})
+        .then(data => { res.json({cards: data, msg: "we got the cards"})})
         .catch(err => res.json({err, msg:"get req didnt pan out"}))
     }
-    else{res.json({card:[]})}
+    else{res.json({cards:[]})}
 }
 
 const receviedCard = (req, res) => {
