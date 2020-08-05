@@ -21,10 +21,12 @@ const getUsersCards = (req, res) => {
     // console.log(req.session.currentUser)
     // if logged in
     // grab user's db stuff and send back
-
-    console.log("==============================")
-    console.log("====== get user cards ========")
-    console.log("==============================")
+    if(req.session.currentUser){
+        db.any('SELECT cards.*, albums.*, albums.id as album_id FROM cards JOIN albums ON cards.id = albums.card_id WHERE albums.user_id = $1', req.session.currentUser.id)
+        .then(data => { res.json({data, msg: "we got the cards"})})
+        .catch(err => res.json({err, msg:"get req didnt pan out"}))
+    }
+    else{res.json({card:[]})}
 }
 
 const receviedCard = (req, res) => {

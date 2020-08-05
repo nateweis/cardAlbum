@@ -20,6 +20,7 @@ export const auth = ['$http', '$window', 'cardScopeService', function($http, $wi
         .then((res)=>{ 
             // console.log(res.data)
             authCtrl.currentUser = res.data.data
+            cardScopeService.activateGetCards();
          })
         .catch((err)=>{console.log(err)})
     }

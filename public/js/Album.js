@@ -14,13 +14,11 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     // ================================== //
 
     this.getUsersCards = function(){
-        // $http({
-        //     method: 'GET',
-        //     url: '/cards'
-        // })
-        console.log("==============================")
-        console.log("====== get user cards ========")
-        console.log("==============================")
+
+        $http({method: 'GET', url: '/cards'})
+        .then(data => console.log(data.data))
+        .catch(err => console.log(err))
+
     }
 
     // ================================== //
