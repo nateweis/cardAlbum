@@ -27,14 +27,11 @@ const receviedCard = (req, res) => {
    
     // console.log(req.body)
     db.one('SELECT * FROM cards WHERE api_id = $1', req.body.card.api_id)
-    .then(data =>{
-        res.json({data, message: "card IS in the db"})
-        // we need to make a new album entry 
-    } )
+    .then(data => res.json({data, ndb: ['album'], msg: newAlbumEntry(data.id, req.body.user)}))
     .catch(err =>{
-        if(err.received === 0){ //we nee to make a new album entree and card and the card id has to be in the album
+        if(err.received === 0){ //we nee to make a new album entry
             db.one(sqlNewCard, req.body.card) 
-            .then(data => res.json({data, msg: "inserted a new card"}))
+            .then(data => res.json({data, ndb: ['album', 'card'], msg: newAlbumEntry(data.id, req.body.user) }))
             .catch(err => res.json({err, msg: 'didnt work on getting card call back info'}))
         }
         else res.json({err})
@@ -42,11 +39,10 @@ const receviedCard = (req, res) => {
     
 }
 
-const testFunc = (data) => {
-    console.log("============================================")
-    console.log("======== This one was called ===============")
-    console.log("============================================")
-    console.log(data)
+const newAlbumEntry = (card, user) => {
+    
+    console.log(`card id => ${card} / user id => ${user}`)
+    return "Made it to the new Album Entry maker"
     
 }
 

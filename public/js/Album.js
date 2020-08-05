@@ -50,21 +50,23 @@ export const album =  ['$http', function($http){
         });
         if(addCard){
             const newCard = {
-                atk: card.atk,
-                attribute: card.attribute,
+                atk: card.atk || null,
+                attribute: card.attribute || null,
                 card_images : [],
-                def: card.def,
+                def: card.def || null,
                 desc: card.desc,
                 api_id : card.id,
-                level : card.level,
+                level : card.level || null,
                 name: card.name,
                 race: card.race,
                 type: card.type,
+                rarity: card.card_sets[0].set_rarity_code,
                 ammount : 1
             }
             newCard.card_images[0] = card.card_images[0].image_url
             newCard.card_images[1] = card.card_images[0].image_url_small
-            
+            console.log(card)
+            console.log(newCard)
             ctrl.yourCards.push(newCard);
             ctrl.sendCardToBackend(newCard, user);
         }
