@@ -33,7 +33,7 @@ const receviedCard = (req, res) => {
     } )
     .catch(err =>{
         if(err.received === 0){ //we nee to make a new album entree and card and the card id has to be in the album
-            db.one(sqlNewCard, req.body.card)
+            db.one(sqlNewCard, req.body.card) 
             .then(data => res.json({data, msg: "inserted a new card"}))
             .catch(err => res.json({err, msg: 'didnt work on getting card call back info'}))
         }
