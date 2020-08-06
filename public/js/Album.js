@@ -4,8 +4,14 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     
     this.allCards = [];
     this.yourCards = [];
+    this.mouseOverCard = {};
+    this.getCardDetails = card => ctrl.mouseOverCard = card
+
     this.includePath = 'partials/Home.html'
-    this.changeIncludePath = path => ctrl.includePath = `partials/${path}.html`
+    this.changeIncludePath = path => {
+        ctrl.includePath = `partials/${path}.html`
+        ctrl.mouseOverCard = {}
+    }
 
     $rootScope.$on('fireFunc', ()=>ctrl.getUsersCards())
 
@@ -39,6 +45,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
             console.log(err)
         })
     }
+
 
     // ================================== //
     //        Add to Your Cards           //

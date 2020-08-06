@@ -1,6 +1,14 @@
 <h4>Your Album</h4>
 <div ng-if="album.yourCards.length > 0">
     <div class="card-container">
-        <div class="card" ng-repeat="card in album.yourCards"> <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}> </div class="card">
+
+        <div class="detail-window">
+            <img ng-if="album.mouseOverCard.api_id" ng-src="{{album.mouseOverCard.card_images[0]}}" alt="{{album.mouseOverCard.name}}">
+        </div>
+
+        <div class="card-box">
+            <div class="card" ng-repeat="card in album.yourCards" ng-mouseenter="album.getCardDetails(card)"> <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}> </div class="card">
+        </div>
+        
     </div>
 </div>

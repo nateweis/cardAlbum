@@ -143,13 +143,29 @@ body{ margin:0; padding:0; font-size:100%; line-height:1; }
         Card Display 
 ...........................*/ 
 .card-container{
+  height: 100vh;
+  position: relative;
+}
+.detail-window{
+  background-color: lightgreen;
+  width: 25%;
+  height: 90%;
+  position: fixed;
+  left: 0;
+}
+.card-box{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: pink;
+  width: 75%;
+  position: absolute;
+  right: 0;
 }
 
 .card{
   cursor: pointer;
+  margin: 10px;
 }
 .card-img{
   width: 100px;
