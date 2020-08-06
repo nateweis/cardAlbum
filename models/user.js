@@ -1,5 +1,12 @@
 const db = require('../db/db_connection');
 
+const newUser = (req, res) => {
+    db.none('INSERT INTO users (username, password) VALUES (${username}, ${password})', req.body)
+    .then(()=>res.json({msg:'new user added'}))
+    .catch(err => res.json({err, msg: 'there was an err making a new user'}))
+}
+
+
 const login = (req, res) => {
     db.one('SELECT * FROM users WHERE username = $1', req.body.username)
     .then(data => {
@@ -27,5 +34,6 @@ const deleteSession = (req, res) => {
 module.exports = {
     login,
     getUserInfo,
-    deleteSession
+    deleteSession,
+    newUser
 }

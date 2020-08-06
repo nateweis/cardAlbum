@@ -13,6 +13,20 @@ export const auth = ['$http', '$window', 'cardScopeService', function($http, $wi
         cardScopeService.activateGetCards();
     }
 
+    // ================================== //
+    //             Sign Up                //
+    // ================================== //
+    this.createAccount = function(){
+        $http({method: 'POST', url: '/users/new', data: {username: this.username, password: this.password}})
+        .then(data => {
+            console.log(data);
+            authCtrl.username = '';
+            authCtrl.password = '';
+            authCtrl.changeLoginType(true);
+        })
+        .catch(err => console.log(err))
+    }
+
      // ================================== //
     //              Log in                //
     // ================================== //
