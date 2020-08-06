@@ -2,15 +2,19 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     //get the this
     const ctrl = this;
     
+    this.packName = '';
+    this.cardLock = false
     this.allCards = [];
     this.yourCards = [];
     this.mouseOverCard = {};
-    this.getCardDetails = card => ctrl.mouseOverCard = card
+    this.getCardDetails = card => {if(!ctrl.cardLock) ctrl.mouseOverCard = card}
+    this.changeCardlock = () => ctrl.cardLock = !ctrl.cardLock
 
     this.includePath = 'partials/Home.html'
     this.changeIncludePath = path => {
-        ctrl.includePath = `partials/${path}.html`
-        ctrl.mouseOverCard = {}
+        ctrl.includePath = `partials/${path}.html`;
+        ctrl.mouseOverCard = {};
+        ctrl.cardLock = false;
     }
 
     $rootScope.$on('fireFunc', ()=>ctrl.getUsersCards())
@@ -40,6 +44,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
             // console.log(res.data.data)
             ctrl.allCards = res.data.data
             ctrl.changeIncludePath('Cards')
+            ctrl.packName = pack
         })
         .catch((err) => {
             console.log(err)

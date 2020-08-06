@@ -1,5 +1,20 @@
+:root{
+  --bg: #242326;
+  --bg-accent:#484a4d;
+  --text-color: #dadce1;
+  --color-brown: rgb(94, 56, 13);
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+}
 
 body{ margin:0; padding:0; font-size:100%; line-height:1; }
+ul{list-style: none; margin: 0; padding: 0;}
+a{
+  color: var(--text-color);
+  text-decoration: none;
+}
 
 /* ************************** 
         Landing Page
@@ -127,16 +142,43 @@ body{ margin:0; padding:0; font-size:100%; line-height:1; }
 /* ************************** 
         Nav Bar
 ...........................*/ 
+.nav-container{
+  height: var(--nav-size);
+  background-color: var(--bg);
+  padding: 0 1rem;
+  border-bottom: var(--border);
+}
 .navbar{
-    display: flex;
-    justify-content: space-around;
-    border: 2px solid black;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+    
 } 
-.nav-container .navbar li{
-    list-style: none;
+.nav-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link{
+  width: calc(var(--nav-size) * 1.5);
+  background-color: var(--bg-accent);
+  border-radius: 5%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
+.nav-link:hover{
+  filter: brightness(1.2);
+}
+/* .nav-container .navbar li{
     border: 3px solid lightblue;
     margin-left: 20%;
-}
+} */
+
 
 
 /* ************************** 
@@ -170,4 +212,50 @@ body{ margin:0; padding:0; font-size:100%; line-height:1; }
 .card-img{
   width: 100px;
   height: 150px;
+}
+
+.dropdown-container{
+  height: 30px;
+  background-color: var(--bg);
+  padding: 0 1rem;
+  border-bottom: var(--border);
+}
+
+.dropdown{
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-item{
+  width: calc(30px * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown-btn{
+  width: calc(30px * 0.5);
+  height: calc(30px * 0.5);
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 300ms;
+}
+.dropdown-btn:hover{
+  background-color: var(--bg-accent);
+  border-radius: 40%;
+}
+
+.arrow {
+  border:solid var(--text-color);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  cursor: pointer;
+  
 }
