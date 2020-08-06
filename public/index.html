@@ -17,7 +17,17 @@
       </span>
 
       <span ng-if="!auth.currentUser.id" >
-        <button ng-click="auth.changeLoggin()" >Log In</button>
+        <div class="login-container">
+          <div ng-click="auth.changeLoginType(false)">Creat Account</div>
+          <div ng-click="auth.changeLoginType(true)">Log In</div>
+
+          <input type="text" ng-model="auth.username" placeholder="Username">
+          <input type='password' ng-model="auth.password" placeholder="Password">
+          
+          <button ng-if="!auth.logInScreen" ng-click="auth.changeLoggin()" >Sign Up</button>
+          <button ng-if="auth.logInScreen" ng-click="auth.changeLoggin()" >Log In</button>
+
+        </div>
       </span>
         
     </div>
