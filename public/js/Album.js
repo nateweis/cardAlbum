@@ -33,6 +33,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         .then(function(res){
             // console.log(res.data.data)
             ctrl.allCards = res.data.data
+            ctrl.changeIncludePath('Cards')
         })
         .catch((err) => {
             console.log(err)
