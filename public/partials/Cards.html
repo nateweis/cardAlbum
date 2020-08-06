@@ -1,5 +1,5 @@
 <div ng-if="album.allCards.length > 0"> 
-    <ul>
-        <li ng-repeat="card in album.allCards" ng-click="album.addCardToAlbum(card, auth.currentUser.id)"> {{card.name}} </li>
-    </ul>
+    <div class="card-container">
+        <div class="card" ng-repeat="card in album.allCards" ng-click="album.addCardToAlbum(card, auth.currentUser.id)"> <img class="card-img" ng-src="{{card.card_images[0].image_url_small}}" alt={{card.name}}> </div>
+    </div>
 </div>

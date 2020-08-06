@@ -1,4 +1,6 @@
 <h4>Your Album</h4>
-<ul ng-if="album.yourCards.length > 0">
-    <li ng-repeat="card in album.yourCards"> {{card.name}} : {{card.ammount}} </li>
-</ul>
+<div ng-if="album.yourCards.length > 0">
+    <div class="card-container">
+        <div class="card" ng-repeat="card in album.yourCards"> <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}> </div class="card">
+    </div>
+</div>
