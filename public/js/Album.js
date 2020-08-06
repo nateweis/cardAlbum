@@ -47,7 +47,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         this.yourCards.forEach(c => {
             if(c.api_id === card.id){
                 c.ammount++
-                // updateAlbum(c, user)
+                ctrl.updateAlbum(c)
                 addCard = false
             }
         });
@@ -64,12 +64,13 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
                 race: card.race,
                 type: card.type,
                 rarity: card.card_sets[0].set_rarity_code,
+                user_id: user,
+                favorite: false,
                 ammount : 1
             }
             newCard.card_images[0] = card.card_images[0].image_url
             newCard.card_images[1] = card.card_images[0].image_url_small
-            console.log(card)
-            console.log(newCard)
+            
             ctrl.yourCards.push(newCard);
             ctrl.sendCardToBackend(newCard, user);
         }
@@ -81,6 +82,15 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.sendCardToBackend = function(card, user){
         $http({method: 'POST', url: '/cards', data:{card, user}})
         .then(data => console.log(data.data))
+        .catch(err => console.log(err))
+    }
+
+    // ================================== //
+    //           Update Album             //
+    // ================================== //
+    this.updateAlbum = function(card){
+        $http({method: 'PUT', url: '/cards', data: card})
+        .then(data => console.log(data))
         .catch(err => console.log(err))
     }
 

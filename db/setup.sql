@@ -23,6 +23,7 @@ CREATE TABLE albums(
     id SERIAL PRIMARY KEY,
     card_id INT,
     user_id INT,
+    api_number INT,
     ammount INT,
     favorite BOOL
 );

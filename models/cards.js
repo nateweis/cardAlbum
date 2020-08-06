@@ -31,11 +31,11 @@ const receviedCard = (req, res) => {
    
     // console.log(req.body)
     db.one('SELECT * FROM cards WHERE api_id = $1', req.body.card.api_id)
-    .then(data => res.json({data, ndb: ['album'], msg: newAlbumEntry(data.id, req.body.user)}))
+    .then(data => res.json({data, ndb: ['album'], msg: newAlbumEntry(data.id, req.body.user, data.api_id)}))
     .catch(err =>{
         if(err.received === 0){
             db.one(sqlNewCard, req.body.card) 
-            .then(data => res.json({data, ndb: ['album', 'card'], msg: newAlbumEntry(data.id, req.body.user) }))
+            .then(data => res.json({data, ndb: ['album', 'card'], msg: newAlbumEntry(data.id, req.body.user, req.body.card.api_id) }))
             .catch(err => res.json({err, msg: 'didnt work on getting card call back info'}))
         }
         else res.json({err})
@@ -43,18 +43,26 @@ const receviedCard = (req, res) => {
     
 }
 
-const newAlbumEntry = (card, user) => {
+const newAlbumEntry = (card, user, api) => {
     let succesfullEntry;
-    db.none('INSERT INTO albums (card_id, user_id, ammount, favorite) VALUES($1, $2, 1, false)', [card, user])
+    db.none('INSERT INTO albums (card_id, user_id, ammount, favorite, api_number) VALUES($1, $2, 1, false, $3)', [card, user, api])
     .then(()=> succesfullEntry = "successfully added to album")
     .catch(err => succesfullEntry = err)
     
     return succesfullEntry
 }
 
+const updateCardInAlbum = (req, res) => {
+    db.none('UPDATE albums SET ammount = ${ammount}, favorite = ${favorite} WHERE user_id = ${user_id} AND api_number = ${api_id}', req.body)
+    .then(()=>res.json({msg:"updated to album success"}))
+    .catch(err=>res.json({err, msg:"failed update to album"}))
+}
+
+
 
 
 module.exports = {
     getUsersCards,
-    receviedCard
+    receviedCard,
+    updateCardInAlbum
 }
