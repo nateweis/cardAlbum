@@ -17,6 +17,12 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.secondMenuClass = 'slide_in_left';
     this.slideTo = function(menu){
         this.doTheSlide = true;
+        this.mainMenuClass = 'slide_out_left';
+        this.secondMenuClass = 'slide_in_left';
+    }
+    this.secondSlider = function(){
+        this.mainMenuClass = 'slide_in_right';
+        this.secondMenuClass = 'slide_out_right';
     }
 
     // card details when hover over card

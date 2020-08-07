@@ -304,11 +304,29 @@ a{
   animation: slideInLeft 500ms ease-in-out;
 }
 
+.slide_out_right{
+  position: absolute;
+  transform: translateX(110%); 
+  opacity: .01;
+  animation: slideOutRight 500ms ease-in-out;
+}
+.slide_in_right{
+  animation: slideInRight 500ms ease-in-out;
+}
+
 @keyframes slideOutLeft{
   0%{transform: translateX(0); opacity: 1; position: static;}
   100%{opacity: .01;}
 }
 @keyframes slideInLeft{
   0%{transform: translateX(110%); opacity: 0.1; position: absolute;}
+  100%{transform: translateX(0); opacity: 1;}
+}
+@keyframes slideOutRight{
+  0%{transform: translateX(0); opacity: 1; position: static;}
+  100%{opacity: .01;}
+}
+@keyframes slideInRight{
+  0%{transform: translateX(-110%); opacity: 0.1; position: absolute;}
   100%{transform: translateX(0); opacity: 1;}
 }
