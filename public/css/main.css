@@ -214,6 +214,10 @@ a{
   height: 150px;
 }
 
+/* ************************** 
+      Filter Dropdown 
+...........................*/ 
+
 .dropdown-container{
   height: 30px;
   background-color: var(--bg);
@@ -249,6 +253,30 @@ a{
   border-radius: 40%;
 }
 
+.dropdown-menu{
+  position: absolute;
+  top: 88px;
+  z-index: 5;
+  width: 300px;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.menu-item{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius:var(--border-radius) ;
+  transition: background var(--speed);
+  padding: 0.5rem;
+}
+.menu-item:hover{
+  background-color: #525357;
+}
+
 .arrow {
   border:solid var(--text-color);
   border-width: 0 3px 3px 0;
@@ -258,4 +286,29 @@ a{
   -webkit-transform: rotate(45deg);
   cursor: pointer;
   
+}
+
+.start_out{
+  position: absolute;
+  transform: translateX(110%);
+  opacity: .01; 
+}
+
+.slide_out_left{
+  position: absolute;
+  transform: translateX(-110%); 
+  opacity: .01;
+  animation: slideOutLeft 500ms ease-in-out;
+}
+.slide_in_left{
+  animation: slideInLeft 500ms ease-in-out;
+}
+
+@keyframes slideOutLeft{
+  0%{transform: translateX(0); opacity: 1; position: static;}
+  100%{opacity: .01;}
+}
+@keyframes slideInLeft{
+  0%{transform: translateX(110%); opacity: 0.1; position: absolute;}
+  100%{transform: translateX(0); opacity: 1;}
 }

@@ -1,5 +1,17 @@
 <div class="dropdown-container">
-    <ul class="dropdown"> <li class="dropdown-item"> <a class="dropdown-btn" href=""><i class="arrow"></i></a> </li> </ul>
+    <ul class="dropdown"> 
+        <li class="dropdown-item"> 
+            <a class="dropdown-btn" ng-click="album.changeFilterMenu()" href=""><i class="arrow"></i></a>
+            <div class="dropdown-menu" ng-if="album.filterMenu">
+                <!-- Main Menu -->
+                <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('sort')">Sort</a>
+                <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('filter')">Filter</a>
+
+                <!-- Secondary Menu -->
+                <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Back</a>
+            </div>   
+        </li> 
+    </ul>
 </div>
 
 <h3>Your Album</h3>

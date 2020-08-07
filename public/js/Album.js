@@ -3,13 +3,32 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     const ctrl = this;
     
     this.packName = '';
-    this.cardLock = false
     this.allCards = [];
     this.yourCards = [];
+
+    // ================================== //
+    //    Little Qulity of app Stuff      //
+    // ================================== // 
+    
+    // the dropdown sort menu
+    this.filterMenu = false;
+    this.doTheSlide = false;
+    this.mainMenuClass = 'slide_out_left';
+    this.secondMenuClass = 'slide_in_left';
+    this.slideTo = function(menu){
+        this.doTheSlide = true;
+    }
+
+    // card details when hover over card
     this.mouseOverCard = {};
     this.getCardDetails = card => {if(!ctrl.cardLock) ctrl.mouseOverCard = card}
-    this.changeCardlock = () => ctrl.cardLock = !ctrl.cardLock
 
+    // lock card when clicked
+    this.cardLock = false;
+    this.changeCardlock = () => ctrl.cardLock = !ctrl.cardLock
+    this.changeFilterMenu = () => ctrl.filterMenu = !ctrl.filterMenu
+
+    // nav bar click
     this.includePath = 'partials/Home.html'
     this.changeIncludePath = path => {
         ctrl.includePath = `partials/${path}.html`;
@@ -17,11 +36,11 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         ctrl.cardLock = false;
     }
 
-    $rootScope.$on('fireFunc', ()=>ctrl.getUsersCards())
-
     // ================================== //
     //         Get User's Cards           //
     // ================================== //
+
+    $rootScope.$on('fireFunc', ()=>ctrl.getUsersCards())
 
     this.getUsersCards = function(){
 
