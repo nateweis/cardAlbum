@@ -15,10 +15,12 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.doTheSlide = false;
     this.mainMenuClass = 'slide_out_left';
     this.secondMenuClass = 'slide_in_left';
+    this.whichMenu = 'filter'; //true is filter / false is sort
     this.slideTo = function(menu){
         this.doTheSlide = true;
         this.mainMenuClass = 'slide_out_left';
         this.secondMenuClass = 'slide_in_left';
+        this.whichMenu = menu;
     }
     this.secondSlider = function(){
         this.mainMenuClass = 'slide_in_right';

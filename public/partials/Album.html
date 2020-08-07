@@ -9,6 +9,18 @@
 
                 <!-- Secondary Menu -->
                 <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.secondSlider()">Back</a>
+                <!-- Filter -->
+                <span ng-if="album.whichMenu === 'filter' " >
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monster</a>
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spell</a>
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Trap</a>
+                </span>
+                <!-- Sort -->
+                <span ng-if="album.whichMenu === 'sort' " >
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Rarity</a>
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">A -> Z</a>
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Z -> A</a>
+                </span>
             </div>   
         </li> 
     </ul>
