@@ -15,7 +15,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.doTheSlide = false;
     this.mainMenuClass = 'slide_out_left';
     this.secondMenuClass = 'slide_in_left';
-    this.whichMenu = 'filter'; //true is filter / false is sort
+    this.whichMenu = 'filter'; 
     this.slideTo = function(menu){
         this.doTheSlide = true;
         this.mainMenuClass = 'slide_out_left';
@@ -25,6 +25,14 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.secondSlider = function(){
         this.mainMenuClass = 'slide_in_right';
         this.secondMenuClass = 'slide_out_right';
+    }
+    
+    // the filter and sort options 
+    this.filter;
+    this.compare
+    this.filterSelected = function(key, val){
+        this.filter = val;
+        this.compare = key;
     }
 
     // card details when hover over card
@@ -53,7 +61,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.getUsersCards = function(){
 
         $http({method: 'GET', url: '/cards'})
-        .then(data => ctrl.yourCards = data.data.cards)
+        .then(data => {ctrl.yourCards = data.data.cards; console.log(data.data.cards)})
         .catch(err => console.log(err))
 
     }
