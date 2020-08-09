@@ -34,6 +34,9 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         this.filter = val;
         this.compare = key;
     }
+    this.checkCheange = function(){
+        console.log('Hello World')
+    }
 
     // card details when hover over card
     this.mouseOverCard = {};
