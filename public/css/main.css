@@ -195,6 +195,9 @@ a{
   position: fixed;
   left: 0;
 }
+.detail-window img{
+  max-width: 100%;
+}
 .card-box{
   display: flex;
   flex-wrap: wrap;

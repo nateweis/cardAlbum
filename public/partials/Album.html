@@ -11,7 +11,7 @@
                 <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.secondSlider()">Back</a>
                 <!-- Filter -->
                 <span ng-if="album.whichMenu === 'filter' " >
-                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.filterSelected('type', 'Monster')">Monster</a>
+                    <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.filterSelected('atk', true)">Monster</a>
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.filterSelected('type', 'Spell Card')">Spell</a>
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.filterSelected('type', 'Trap Card')">Trap</a>
                 </span>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="card-box">
-            <div class="card" ng-repeat="card in album.yourCards | filter : album.filter : true : album.compare" ng-mouseenter="album.getCardDetails(card)" ng-click="album.changeCardlock()"> <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}> </div class="card">
+            <div class="card" ng-repeat="card in album.yourCards | cardFilter : album.compare : album.filter" ng-mouseenter="album.getCardDetails(card)" ng-click="album.changeCardlock()"> <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}>{{card.ammount}} </div class="card">
         </div>
         
     </div>
