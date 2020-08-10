@@ -16,6 +16,7 @@ a{
   text-decoration: none;
 }
 
+
 /* ************************** 
         Landing Page
 ...........................*/
@@ -267,6 +268,10 @@ a{
   padding: 1rem;
   overflow: hidden;
 }
+.extended{
+  width: 500px;
+  color: var(--text-color);
+}
 
 .menu-item{
   height: 50px;
@@ -289,6 +294,15 @@ a{
   -webkit-transform: rotate(45deg);
   cursor: pointer;
   
+}
+.filter-container{
+  display: flex;
+  justify-content: space-between;
+}
+.filter-container span{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .start_out{

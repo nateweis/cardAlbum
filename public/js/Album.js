@@ -29,13 +29,14 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     
     // the filter and sort options 
     this.filter;
-    this.compare
+    this.compare;
+    this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
     this.filterSelected = function(key, val){
         this.filter = val;
         this.compare = key;
     }
-    this.checkCheange = function(){
-        console.log('Hello World')
+    this.checkChange = function(){
+        console.log(this.radioBtnVal)
     }
 
     // card details when hover over card

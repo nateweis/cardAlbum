@@ -2,10 +2,11 @@
     <ul class="dropdown"> 
         <li class="dropdown-item"> 
             <a class="dropdown-btn" ng-click="album.changeFilterMenu()" href=""><i class="arrow"></i></a>
-            <div class="dropdown-menu" ng-if="album.filterMenu">
+            <div class="dropdown-menu {{album.whichMenu === 'options'? ' extended' : ''}}" ng-if="album.filterMenu">
                 <!-- Main Menu -->
                 <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('sort')">Sort</a>
                 <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('filter')">Filter</a>
+                <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('options')">Options</a>
 
                 <!-- Secondary Menu -->
                 <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.secondSlider()">Back</a>
@@ -16,23 +17,14 @@
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.filterSelected('type', 'Trap Card')">Trap</a>
                     <input 
                         type="checkbox" 
-                        ng-change="album.checkCheange()" 
-                        value="CheckBox" 
-                        ng-model="album.inputVal"
+                        ng-change="album.checkCheange('type', 'Spell Card')" 
+                        ng-model="album.inputVal['Spell Card']"                      
                         class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}"
                     >
                     <input 
                         type="checkbox" 
-                        ng-change="album.checkCheange()" 
-                        value="CheckBox2" 
-                        ng-model="album.inputVal"
-                        class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}"
-                    >
-                    <input 
-                        type="checkbox" 
-                        ng-change="album.checkCheange()" 
-                        value="CheckBox3" 
-                        ng-model="album.inputVal"
+                        ng-change="album.checkCheange('type', 'Trap Card')" 
+                        ng-model="album.inputVal['Trap Card']"
                         class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}"
                     >
                 </span>
@@ -42,6 +34,93 @@
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">A -> Z</a>
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Z -> A</a>
                 </span>
+                <!-- Radio Btns -->
+                <span class="filter-container" ng-if="album.whichMenu === 'options' " >
+                    
+                    <span>
+                        <!-- Monsters -->
+                        <p class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monsters</p>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
+                            <input type="radio" value="all" ng-model="album.radioBtnVal['M']" ng-change="album.checkChange()" >
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">None
+                            <input type="radio" value="none" ng-model="album.radioBtnVal['M']" ng-change="album.checkChange()" >
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
+                            <input type="radio" value="some" ng-model="album.radioBtnVal['M']" ng-change="album.checkChange()" >
+                        </label>
+                        
+                        <!-- Spells -->
+                        <p class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spells</p>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
+                            <input type="radio" value="all" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">None
+                            <input type="radio" value="none" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
+                            <input type="radio" value="some" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
+                        </label>
+
+                        <!-- Traps -->
+                        <p class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Traps</p>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
+                            <input type="radio" value="all" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">None
+                            <input type="radio" value="none" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
+                            <input type="radio" value="some" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
+                        </label>
+                    </span>
+
+                    <span ng-if="album.radioBtnVal.S === 'some'">
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Filed Spells 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Equip Spells 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Noraml Spells
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Ritual Spells
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Continues Spells
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Quick Play Spells
+                        </label>
+                    </span>
+
+                    <span ng-if="album.radioBtnVal.T === 'some'">
+                        
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Noraml Traps 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Counter Traps 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox">
+                            Continues Spell
+                        </label>
+                        
+                    </span>
+                    
+                </span>
+                
             </div>   
         </li> 
     </ul>
