@@ -53,25 +53,25 @@
                         <!-- Spells -->
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spells</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
-                            <input type="radio" value="all" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
+                            <input type="radio" value="all" ng-model="album.radioBtnVal['S']" >
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">None
-                            <input type="radio" value="none" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
+                            <input type="radio" value="none" ng-model="album.radioBtnVal['S']" >
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
-                            <input type="radio" value="some" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
+                            <input type="radio" value="some" ng-model="album.radioBtnVal['S']" >
                         </label>
 
                         <!-- Traps -->
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Traps</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
-                            <input type="radio" value="all" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
+                            <input type="radio" value="all" ng-model="album.radioBtnVal['T']" >
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">None
-                            <input type="radio" value="none" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
+                            <input type="radio" value="none" ng-model="album.radioBtnVal['T']" >
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
-                            <input type="radio" value="some" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
+                            <input type="radio" value="some" ng-model="album.radioBtnVal['T']" >
                         </label>
                     </span>
 
@@ -125,7 +125,7 @@
         </li> 
     </ul>
 </div>
-{{album.inputVal}}
+{{album.filterArr}}
 <h3>Your Album</h3>
 <div ng-if="album.yourCards.length > 0">
     <div class="card-container">

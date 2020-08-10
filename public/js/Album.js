@@ -31,12 +31,19 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.filter;
     this.compare;
     this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
+    this.filterArr = [];
     this.filterSelected = function(key, val){
         this.filter = val;
         this.compare = key;
     }
     this.checkChange = function(key, val){
-        console.log(this.inputVal)
+        const obj = {key, val}
+        if(this.inputVal[val]) this.filterArr.push(obj)
+        else {
+            for(let i = 0; i < ctrl.filterArr.length; i++){
+                if(ctrl.filterArr[i].val === val) ctrl.filterArr.splice(i, 1)
+            }
+        }
     }
 
     // card details when hover over card
