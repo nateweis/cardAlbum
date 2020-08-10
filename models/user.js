@@ -1,4 +1,14 @@
 const db = require('../db/db_connection');
+/*
+// ***** If want to do encryption........
+const bcrypt = require('bcrypt')
+
+//  ******* Add this before the db query in the newUser function ********
+req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+
+// ******* Replace this if instead of (data.password === req.body.password) in the login func ******
+(bcrypt.compareSync(req.body.password, data.password))
+*/
 
 const newUser = (req, res) => {
     db.none('INSERT INTO users (username, password) VALUES (${username}, ${password})', req.body)

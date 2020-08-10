@@ -28,7 +28,6 @@ CREATE TABLE albums(
     favorite BOOL
 );
 
-INSERT INTO users(username, password) VALUES ('nate', 'nate');
 INSERT INTO cards(api_id, atk, def, level, name, race, type, attribute, rarity, descrip, card_images) VALUES (
     89631139,
     3000,
