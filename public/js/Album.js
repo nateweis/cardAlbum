@@ -35,8 +35,8 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         this.filter = val;
         this.compare = key;
     }
-    this.checkChange = function(){
-        console.log(this.radioBtnVal)
+    this.checkChange = function(key, val){
+        console.log(this.inputVal)
     }
 
     // card details when hover over card

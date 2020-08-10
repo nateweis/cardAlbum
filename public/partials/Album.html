@@ -39,19 +39,19 @@
                     
                     <span>
                         <!-- Monsters -->
-                        <p class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monsters</p>
+                        <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monsters</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
-                            <input type="radio" value="all" ng-model="album.radioBtnVal['M']" ng-change="album.checkChange()" >
+                            <input type="radio" value="all" ng-model="album.radioBtnVal['M']"  >
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">None
-                            <input type="radio" value="none" ng-model="album.radioBtnVal['M']" ng-change="album.checkChange()" >
+                            <input type="radio" value="none" ng-model="album.radioBtnVal['M']" >
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
-                            <input type="radio" value="some" ng-model="album.radioBtnVal['M']" ng-change="album.checkChange()" >
+                            <input type="radio" value="some" ng-model="album.radioBtnVal['M']">
                         </label>
                         
                         <!-- Spells -->
-                        <p class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spells</p>
+                        <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spells</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
                             <input type="radio" value="all" ng-model="album.radioBtnVal['S']" ng-change="album.checkChange()" >
                         </label>
@@ -63,7 +63,7 @@
                         </label>
 
                         <!-- Traps -->
-                        <p class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Traps</p>
+                        <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Traps</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
                             <input type="radio" value="all" ng-model="album.radioBtnVal['T']" ng-change="album.checkChange()" >
                         </label>
@@ -77,27 +77,27 @@
 
                     <span ng-if="album.radioBtnVal.S === 'some'">
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox">
-                            Filed Spells 
+                            <input type="checkbox" ng-model="album.inputVal['Field']" ng-change="album.checkChange('race', 'Field')">
+                            Field Spells 
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="album.inputVal['Equip']" ng-change="album.checkChange('race', 'Equip')">
                             Equip Spells 
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="album.inputVal['Spell Normal']" ng-change="album.checkChange('race', 'Spell Normal')">
                             Noraml Spells
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="album.inputVal['Ritual']" ng-change="album.checkChange('race', 'Ritual')">
                             Ritual Spells
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox">
-                            Continues Spells
+                            <input type="checkbox" ng-model="album.inputVal['Spell Continuous']" ng-change="album.checkChange('race', 'Spell Continuous')">
+                            Continuous Spells
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="album.inputVal['Quick-Play']" ng-change="album.checkChange('race', 'Quick-Play')">
                             Quick Play Spells
                         </label>
                     </span>
