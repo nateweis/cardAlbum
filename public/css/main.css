@@ -272,6 +272,16 @@ a{
   width: 500px;
   color: var(--text-color);
 }
+#submit{
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  width: 95%;
+  padding-top: 20px;
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+}
 
 .menu-item{
   height: 50px;

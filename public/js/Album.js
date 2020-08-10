@@ -16,6 +16,11 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.mainMenuClass = 'slide_out_left';
     this.secondMenuClass = 'slide_in_left';
     this.whichMenu = 'filter'; 
+
+    this.changeFilterMenu = () => {
+        ctrl.filterMenu = !ctrl.filterMenu
+        if(ctrl.filterMenu === false) this.resetFilter()
+    }
     this.slideTo = function(menu){
         this.doTheSlide = true;
         this.mainMenuClass = 'slide_out_left';
@@ -25,16 +30,20 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.secondSlider = function(){
         this.mainMenuClass = 'slide_in_right';
         this.secondMenuClass = 'slide_out_right';
+        this.radioBtnVal = {S: 'all', T : 'all', M : 'all'};
+        this.inputVal = {};
     }
     
     // the filter and sort options 
     this.filter;
-    this.compare;
     this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
     this.filterArr = [];
-    this.filterSelected = function(key, val){
-        this.filter = val;
-        this.compare = key;
+
+    this.filterSelected = function(){
+        const radio = this.radioBtnVal
+        if(radio['S'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
+        if(radio['T'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Trap Card'})
+        if(radio['M'] === 'all')ctrl.filterArr.push({key: 'atk', val: true})
     }
     this.checkChange = function(key, val){
         const obj = {key, val}
@@ -45,6 +54,13 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
             }
         }
     }
+    this.resetFilter = function(){
+        this.filterArr = [];
+        this.inputVal = {};
+        this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
+        this.whichMenu = 'filter'; 
+        this.doTheSlide = false;
+    }
 
     // card details when hover over card
     this.mouseOverCard = {};
@@ -53,7 +69,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     // lock card when clicked
     this.cardLock = false;
     this.changeCardlock = () => ctrl.cardLock = !ctrl.cardLock
-    this.changeFilterMenu = () => ctrl.filterMenu = !ctrl.filterMenu
+    
 
     // nav bar click
     this.includePath = 'partials/Home.html'
