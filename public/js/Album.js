@@ -35,7 +35,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     }
     
     // the filter and sort options 
-    this.filter;
+    this.filter = [{"key":"type","val":"Spell Card"},{"key":"type","val":"Trap Card"},{"key":"atk","val":true}]
     this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
     this.filterArr = [];
 
@@ -44,6 +44,10 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         if(radio['S'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
         if(radio['T'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Trap Card'})
         if(radio['M'] === 'all')ctrl.filterArr.push({key: 'atk', val: true})
+
+        this.filter = this.filterArr;
+        this.resetFilter();
+        this.filterMenu = false;
     }
     this.checkChange = function(key, val){
         const obj = {key, val}

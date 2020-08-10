@@ -4,12 +4,18 @@ import {album} from './Album.js'
 const app = angular.module('CardAlbum', []);
 
 app.filter('cardFilter', function() {
-    const newArr = (arr, key, val) => {
+    const newArr = (arrCards, filter) => {
         let temp = []
-       arr.forEach(card => {
-           if(card[key] === val){temp.push(card)}
-           else if (key === 'atk' && card[key] !== null){temp.push(card)}
-       });
+    //     arrCards.forEach(card => {
+    //        if(card[key] === val){temp.push(card)}
+    //        else if (key === 'atk' && card[key] !== null){temp.push(card)}
+    //    });
+        arrCards.forEach(card => {
+            filter.forEach(f=>{
+                if(card[f.key] === f.val){temp.push(card)}
+                else if (f.key === 'atk' && card[f.key] !== null){temp.push(card)}
+            })
+        });
        return temp 
     }
     return newArr
