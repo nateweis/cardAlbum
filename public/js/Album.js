@@ -30,15 +30,18 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.secondSlider = function(){
         this.mainMenuClass = 'slide_in_right';
         this.secondMenuClass = 'slide_out_right';
-        this.radioBtnVal = 'M';
+        this.radioBtnVal = 'X';
         this.inputVal = {};
     }
     
-    // the filter and sort options 
+    // ================================== //
+    //         Filter Handleing           //
+    // ================================== // 
     this.filter = [{"key":"return","val":"all"}]
-    this.radioBtnVal = 'M'
+    this.radioBtnVal = 'X'
     this.filterArr = [];
 
+    this.switchCardType = () => ctrl.filterArr =[]
     this.filterSelected = function(){
         const radio = this.radioBtnVal
         if(radio === 'S' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
@@ -47,23 +50,40 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         if(radio === 'X') ctrl.filterArr.push({"key":"return","val":"all"})
         
    
-        this.filter = this.filterArr;
+        // this.filter = this.filterArr;
         this.resetFilter();
         this.filterMenu = false;
     }
+
     this.checkChange = function(key, val){
-        const obj = {key, val}
-        if(this.inputVal[val]) this.filterArr.push(obj)
-        else {
-            for(let i = 0; i < ctrl.filterArr.length; i++){
-                if(ctrl.filterArr[i].val === val) ctrl.filterArr.splice(i, 1)
+        const existingkey = this.filterArr.map(x=>{return x.key}).indexOf(key);
+
+        if(existingkey !== -1){ //if this key alraey exists 
+            if(ctrl.inputVal[val]) ctrl.filterArr[existingkey].val.push(val)
+            else{
+                let arr = ctrl.filterArr[existingkey].val
+                for(let i = 0; i < arr.length; i++){
+                    if(arr[i] === val) ctrl.filterArr[existingkey].val.splice(i, 1)
+                }
+                if(ctrl.filterArr[existingkey].val.length === 0){
+                    for(let i = 0; i < ctrl.filterArr.length; i++){
+                        if(ctrl.filterArr[i].key === key) ctrl.filterArr.splice(i, 1)
+                    }
+                }
             }
         }
+        else{ // if key dosnt exist
+            const nV = [];
+            nV.push(val)
+            this.filterArr.push({key, val: nV})
+        }
+
     }
+
     this.resetFilter = function(){
         this.filterArr = [];
         this.inputVal = {};
-        this.radioBtnVal = 'M'
+        this.radioBtnVal = 'X'
         this.whichMenu = 'filter'; 
         this.doTheSlide = false;
     }

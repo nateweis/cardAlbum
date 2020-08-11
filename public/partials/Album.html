@@ -27,16 +27,20 @@
                     <!-- rdo btn -->
                     <span>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            All Cards
+                            <input type="radio" value="X" ng-model="album.radioBtnVal" ng-click="album.switchCardType()">
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             Monsters
-                            <input type="radio" value="M" ng-model="album.radioBtnVal">
+                            <input type="radio" value="M" ng-model="album.radioBtnVal" ng-click="album.switchCardType()">
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             Spells
-                            <input type="radio" value="S" ng-model="album.radioBtnVal">
+                            <input type="radio" value="S" ng-model="album.radioBtnVal" ng-click="album.switchCardType()">
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             Traps
-                            <input type="radio" value="T" ng-model="album.radioBtnVal">
+                            <input type="radio" value="T" ng-model="album.radioBtnVal" ng-click="album.switchCardType()">
                         </label>
                     </span>
                     <!-- <span>
@@ -133,7 +137,7 @@
                             Effect Monster 
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox" ng-model="album.inputVal['Ritual Monster']" ng-change="album.checkChange('type', 'Ritual')">
+                            <input type="checkbox" ng-model="album.inputVal['Ritual Monster']" ng-change="album.checkChange('type', 'Ritual Monster')">
                             Ritual Monster
                         </label>
                     </span>

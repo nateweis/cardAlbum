@@ -5,8 +5,8 @@ const app = angular.module('CardAlbum', []);
 
 app.filter('cardFilter', function() {
     const newArr = (arrCards, filter) => {
-        if(filter[0].val === 'all') return arrCards
-        
+        if(filter[0].key === 'return') return arrCards
+
         let temp = []
         arrCards.forEach(card => {
             filter.forEach(f=>{
