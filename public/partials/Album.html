@@ -26,7 +26,21 @@
                 <span class="filter-container" ng-if="album.whichMenu === 'options' " >
                     <!-- rdo btn -->
                     <span>
-                        <!-- Monsters -->
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            Monsters
+                            <input type="radio" value="M" ng-model="album.radioBtnVal">
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            Spells
+                            <input type="radio" value="S" ng-model="album.radioBtnVal">
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            Traps
+                            <input type="radio" value="T" ng-model="album.radioBtnVal">
+                        </label>
+                    </span>
+                    <!-- <span>
+                        Monsters
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monsters</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
                             <input type="radio" value="all" ng-model="album.radioBtnVal['M']"  >
@@ -38,7 +52,7 @@
                             <input type="radio" value="some" ng-model="album.radioBtnVal['M']">
                         </label><hr>
                         
-                        <!-- Spells -->
+                        Spells
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spells</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
                             <input type="radio" value="all" ng-model="album.radioBtnVal['S']" >
@@ -50,7 +64,7 @@
                             <input type="radio" value="some" ng-model="album.radioBtnVal['S']" >
                         </label><hr>
 
-                        <!-- Traps -->
+                        Traps
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Traps</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">All
                             <input type="radio" value="all" ng-model="album.radioBtnVal['T']" >
@@ -61,9 +75,9 @@
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
                             <input type="radio" value="some" ng-model="album.radioBtnVal['T']" >
                         </label><hr>
-                    </span>
+                    </span> -->
                     <!-- Spell Subs -->
-                    <span ng-if="album.radioBtnVal.S === 'some'">
+                    <span ng-if="album.radioBtnVal === 'S'">
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spell Subcategories</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             <input type="checkbox" ng-model="album.inputVal['Field']" ng-change="album.checkChange('race', 'Field')">
@@ -91,7 +105,7 @@
                         </label>
                     </span>
                     <!-- Trap Subs -->
-                    <span ng-if="album.radioBtnVal.T === 'some'">
+                    <span ng-if="album.radioBtnVal === 'T'">
                         
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             <input type="checkbox">
@@ -108,7 +122,7 @@
                         
                     </span>
                     <!-- Monster Types -->
-                    <span ng-if="album.radioBtnVal.M === 'some'">
+                    <span ng-if="album.radioBtnVal === 'M'">
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monster Types</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             <input type="checkbox" ng-model="album.inputVal['Normal Monster']" ng-change="album.checkChange('type', 'Normal Monster')">
@@ -128,7 +142,7 @@
 
                     </span>
                     <!-- Monster Lvl -->
-                    <span ng-if="album.radioBtnVal.M === 'some'">
+                    <span ng-if="album.radioBtnVal === 'M'">
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monster Stars</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             <input type="checkbox" ng-model="album.inputVal['1']" ng-change="album.checkChange('level', 1)">

@@ -30,21 +30,22 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.secondSlider = function(){
         this.mainMenuClass = 'slide_in_right';
         this.secondMenuClass = 'slide_out_right';
-        this.radioBtnVal = {S: 'all', T : 'all', M : 'all'};
+        this.radioBtnVal = 'M';
         this.inputVal = {};
     }
     
     // the filter and sort options 
-    this.filter = [{"key":"type","val":"Spell Card"},{"key":"type","val":"Trap Card"},{"key":"atk","val":true}]
-    this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
+    this.filter = [{"key":"return","val":"all"}]
+    this.radioBtnVal = 'M'
     this.filterArr = [];
 
     this.filterSelected = function(){
         const radio = this.radioBtnVal
-        if(radio['S'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
-        if(radio['T'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Trap Card'})
-        if(radio['M'] === 'all')ctrl.filterArr.push({key: 'atk', val: true})
-        console.log(this.filterArr.map(x=> {return x.val}).indexOf('Equip'))
+        if(radio === 'S' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
+        if(radio === 'T' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: 'Trap Card'})
+        if(radio === 'M' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'atk', val: true})
+        if(radio === 'X') ctrl.filterArr.push({"key":"return","val":"all"})
+        
    
         this.filter = this.filterArr;
         this.resetFilter();
@@ -62,7 +63,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.resetFilter = function(){
         this.filterArr = [];
         this.inputVal = {};
-        this.radioBtnVal = {S: 'all', T : 'all', M : 'all'}
+        this.radioBtnVal = 'M'
         this.whichMenu = 'filter'; 
         this.doTheSlide = false;
     }
