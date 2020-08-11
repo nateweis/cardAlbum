@@ -43,14 +43,15 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
 
     this.switchCardType = () => ctrl.filterArr =[]
     this.filterSelected = function(){
+        const ar = [];
         const radio = this.radioBtnVal
-        if(radio === 'S' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
-        if(radio === 'T' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: 'Trap Card'})
-        if(radio === 'M' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'atk', val: true})
+        if(radio === 'S' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: [...ar, 'Spell Card']})
+        if(radio === 'T' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: [...ar, 'Trap Card']})
+        if(radio === 'M' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'atk', val: [...ar, true]})
         if(radio === 'X') ctrl.filterArr.push({"key":"return","val":"all"})
         
    
-        // this.filter = this.filterArr;
+        this.filter = this.filterArr;
         this.resetFilter();
         this.filterMenu = false;
     }

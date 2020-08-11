@@ -5,67 +5,38 @@ const app = angular.module('CardAlbum', []);
 
 app.filter('cardFilter', function() {
     const newArr = (arrCards, filter) => {
-        if(filter[0].key === 'return') return arrCards
+        if(filter[0].key === 'return') return arrCards //if a return all case
 
-        let temp = []
-        arrCards.forEach(card => {
-            filter.forEach(f=>{
-                const existingCard = temp.map(x=>{return x.api_id}).indexOf(card.api_id);
+        let filterDown = arrCards;
+        let temp = [];
 
-                if(existingCard === -1){
+        filter.forEach(f => {
+            temp = []
+            f.val.forEach(v=>{
+                filterDown.forEach(card=>{
+                    const str = v[0] + v[1] + v[2]
                     
-                    const str = f.val[0] + f.val[1] + f.val[2];
-
                     if(str === 'S#C' || str === 'T#C'){ //checking the fields that the spell and trap have the same name
-                        const newVal = f.val.split(' ')
+                        const newVal = v.split(' ')
                         if(newVal[0] === 'S#C'){
                             if(card.type === 'Spell Card' && card.race === newVal[1]) temp.push(card)
                         }
                         else{
                             if(card.type === 'Trap Card' && card.race === newVal[1]) temp.push(card)
-                        }
+                            }
                     }
                     else if (f.key === 'atk' && card[f.key] !== null){temp.push(card)} //then cheking if its the 'all monsters' case
-                    else if(card[f.key] === f.val){temp.push(card)} //now checking the rest of the fiels cases
-                }
-                 
+                    else if(card[f.key] === v) temp.push(card) //pushing eveything else to temp arr
+                })
             })
+            filterDown = temp //whatever meets the peramiters is now the new arr to filter through then we filter again
         });
-       return temp 
+        
+       return filterDown 
     }
     return newArr
 })
-// app.filter('cardFilter', function() {
-//     const newArr = (arrCards, filter) => {
-//         let temp = []
- 
-//         arrCards.forEach(card => {
-//             filter.forEach(f=>{
-//                 const existingCard = temp.map(x=>{return x.api_id}).indexOf(card.api_id);
 
-//                 if(existingCard === -1){
-                    
-//                     const str = f.val[0] + f.val[1] + f.val[2];
-
-//                     if(str === 'S#C' || str === 'T#C'){ //checking the fields that the spell and trap have the same name
-//                         const newVal = f.val.split(' ')
-//                         if(newVal[0] === 'S#C'){
-//                             if(card.type === 'Spell Card' && card.race === newVal[1]) temp.push(card)
-//                         }
-//                         else{
-//                             if(card.type === 'Trap Card' && card.race === newVal[1]) temp.push(card)
-//                         }
-//                     }
-//                     else if (f.key === 'atk' && card[f.key] !== null){temp.push(card)} //then cheking if its the 'all monsters' case
-//                     else if(card[f.key] === f.val){temp.push(card)} //now checking the rest of the fiels cases
-//                 }
-                 
-//             })
-//         });
-//        return temp 
-//     }
-//     return newArr
-// })
 
 app.controller('AuthController', auth );
 app.controller('AlbumController', album);
