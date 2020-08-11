@@ -24,7 +24,7 @@
                 </span>
                 <!-- Filter Radio Btns -->
                 <span class="filter-container" ng-if="album.whichMenu === 'options' " >
-                    
+                    <!-- rdo btn -->
                     <span>
                         <!-- Monsters -->
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monsters</h3>
@@ -36,7 +36,7 @@
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
                             <input type="radio" value="some" ng-model="album.radioBtnVal['M']">
-                        </label>
+                        </label><hr>
                         
                         <!-- Spells -->
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spells</h3>
@@ -48,7 +48,7 @@
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
                             <input type="radio" value="some" ng-model="album.radioBtnVal['S']" >
-                        </label>
+                        </label><hr>
 
                         <!-- Traps -->
                         <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Traps</h3>
@@ -60,10 +60,11 @@
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Filter Subcategories
                             <input type="radio" value="some" ng-model="album.radioBtnVal['T']" >
-                        </label>
+                        </label><hr>
                     </span>
-
+                    <!-- Spell Subs -->
                     <span ng-if="album.radioBtnVal.S === 'some'">
+                        <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Spell Subcategories</h3>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             <input type="checkbox" ng-model="album.inputVal['Field']" ng-change="album.checkChange('race', 'Field')">
                             Field Spells 
@@ -89,7 +90,7 @@
                             Quick Play Spells
                         </label>
                     </span>
-
+                    <!-- Trap Subs -->
                     <span ng-if="album.radioBtnVal.T === 'some'">
                         
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
@@ -103,6 +104,75 @@
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             <input type="checkbox">
                             Continues Spell
+                        </label>
+                        
+                    </span>
+                    <!-- Monster Types -->
+                    <span ng-if="album.radioBtnVal.M === 'some'">
+                        <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monster Types</h3>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['Normal Monster']" ng-change="album.checkChange('type', 'Normal Monster')">
+                            Normal Monster 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['Effect Monster']" ng-change="album.checkChange('type', 'Effect Monster')">
+                            Effect Monster 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['Ritual Monster']" ng-change="album.checkChange('type', 'Ritual')">
+                            Ritual Monster
+                        </label>
+                    </span>
+                    <!-- Extra Deck Types -->
+                    <span>
+
+                    </span>
+                    <!-- Monster Lvl -->
+                    <span ng-if="album.radioBtnVal.M === 'some'">
+                        <h3 class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Monster Stars</h3>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['1']" ng-change="album.checkChange('level', 1)">
+                            1
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['2']" ng-change="album.checkChange('level', 2)">
+                            2 
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['3']" ng-change="album.checkChange('level', 3)">
+                            3
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['4']" ng-change="album.checkChange('level', 4)">
+                            4
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['5']" ng-change="album.checkChange('level', 5)">
+                            5
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['6']" ng-change="album.checkChange('level', 6)">
+                            6
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['7']" ng-change="album.checkChange('level', 7)">
+                            7
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['9']" ng-change="album.checkChange('level', 9)">
+                            9
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['10']" ng-change="album.checkChange('level', 10)">
+                            10
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['11']" ng-change="album.checkChange('level', 11)">
+                            11
+                        </label>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['12']" ng-change="album.checkChange('level', 12)">
+                            12
                         </label>
                         
                     </span>

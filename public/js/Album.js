@@ -44,7 +44,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         if(radio['S'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Spell Card'})
         if(radio['T'] === 'all')ctrl.filterArr.push({key: 'type', val: 'Trap Card'})
         if(radio['M'] === 'all')ctrl.filterArr.push({key: 'atk', val: true})
-        
+        console.log(this.filterArr.map(x=> {return x.val}).indexOf('Equip'))
    
         this.filter = this.filterArr;
         this.resetFilter();

@@ -15,7 +15,10 @@ a{
   color: var(--text-color);
   text-decoration: none;
 }
-
+hr{
+  color: var(--text-color);
+  width: 100%;
+}
 
 /* ************************** 
         Landing Page
@@ -269,7 +272,7 @@ a{
   overflow: hidden;
 }
 .extended{
-  width: 500px;
+  width: 800px;
   color: var(--text-color);
 }
 #submit{
