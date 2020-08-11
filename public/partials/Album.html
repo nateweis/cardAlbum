@@ -4,9 +4,9 @@
             <a class="dropdown-btn" ng-click="album.changeFilterMenu()" href=""><i class="arrow"></i></a>
             <div class="dropdown-menu {{album.whichMenu === 'options'? ' extended' : ''}}" ng-if="album.filterMenu">
                 <!-- Main Menu -->
+                <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('options')">Filter</a>
                 <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('sort')">Sort</a>
-                <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('filter')">Filter</a>
-                <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('options')">Options</a>
+                <!-- <a href="" class="menu-item {{album.doTheSlide? album.mainMenuClass : '' }}" ng-click="album.slideTo('filter')">Filter</a> -->
 
                 <!-- Secondary Menu -->
                 <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}" ng-click="album.secondSlider()">Back</a>
@@ -22,7 +22,7 @@
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">A -> Z</a>
                     <a href="" class="menu-item {{album.doTheSlide? album.secondMenuClass : 'start_out' }}">Z -> A</a>
                 </span>
-                <!-- Radio Btns -->
+                <!-- Filter Radio Btns -->
                 <span class="filter-container" ng-if="album.whichMenu === 'options' " >
                     
                     <span>
@@ -73,7 +73,7 @@
                             Equip Spells 
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox" ng-model="album.inputVal['Spell Normal']" ng-change="album.checkChange('race', 'Spell Normal')">
+                            <input type="checkbox" ng-model="album.inputVal['S#C Normal']" ng-change="album.checkChange('race', 'S#C Normal')">
                             Noraml Spells
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
@@ -81,7 +81,7 @@
                             Ritual Spells
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
-                            <input type="checkbox" ng-model="album.inputVal['Spell Continuous']" ng-change="album.checkChange('race', 'Spell Continuous')">
+                            <input type="checkbox" ng-model="album.inputVal['S#C Continuous']" ng-change="album.checkChange('race', 'S#C Continuous')">
                             Continuous Spells
                         </label>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
