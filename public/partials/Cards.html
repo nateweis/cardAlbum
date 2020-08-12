@@ -1,3 +1,5 @@
+<div ng-include="'partials/FilterDropdown.html'"></div>
+
 <h3>Cards for {{album.packName}} </h3>
 <div ng-if="album.allCards.length > 0"> 
     <div class="card-container">
@@ -7,7 +9,11 @@
         </div>
 
         <div class="card-box">
-            <div class="card" ng-repeat="card in album.allCards" ng-mouseenter="album.getCardDetails(card)" ng-click="album.addCardToAlbum(card, auth.currentUser.id)"> <img class="card-img" ng-src="{{card.card_images[0].image_url_small}}" alt={{card.name}}> </div>
+            <div class="card" 
+             ng-repeat="card in album.allCards | cardFilter : album.filter | orderBy: album.sortOption : !album.reverseSort" 
+             ng-mouseenter="album.getCardDetails(card)" ng-click="album.addCardToAlbum(card, auth.currentUser.id)"> 
+                <img class="card-img" ng-src="{{card.card_images[0].image_url_small}}" alt={{card.name}}> 
+            </div>
         </div>
     </div>
 </div>

@@ -97,7 +97,10 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
 
     // card details when hover over card
     this.mouseOverCard = {};
-    this.getCardDetails = card => {if(!ctrl.cardLock) ctrl.mouseOverCard = card}
+    this.getCardDetails = card => {
+        if(!ctrl.cardLock) ctrl.mouseOverCard = card;
+        if(ctrl.cardLock) console.log(ctrl.mouseOverCard)
+    }
 
     // lock card when clicked
     this.cardLock = false;
@@ -112,6 +115,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         ctrl.cardLock = false;
         ctrl.filterMenu = false;
         ctrl.resetFilter();
+        ctrl.filter = [{"key":"return","val":"all"}]
     }
 
     // ================================== //
@@ -123,7 +127,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.getUsersCards = function(){
 
         $http({method: 'GET', url: '/cards'})
-        .then(data => {ctrl.yourCards = data.data.cards; console.log(data.data.cards)})
+        .then(data => {ctrl.yourCards = data.data.cards; })
         .catch(err => console.log(err))
 
     }

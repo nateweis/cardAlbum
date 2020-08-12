@@ -25,7 +25,7 @@ app.filter('cardFilter', function() {
                             if(card.type === 'Trap Card' && card.race === newVal[1]) temp.push(card)
                             }
                     }
-                    else if (f.key === 'atk' && card[f.key] !== null){temp.push(card)} //then cheking if its the 'all monsters' case
+                    else if (f.key === 'atk' && (card[f.key] !== null && card[f.key] !== undefined)){temp.push(card)} //then cheking if its the 'all monsters' case
                     else if(card[f.key] === v) temp.push(card) //pushing eveything else to temp arr
                 })
             })
