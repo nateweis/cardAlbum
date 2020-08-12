@@ -58,11 +58,19 @@ const updateCardInAlbum = (req, res) => {
     .catch(err=>res.json({err, msg:"failed update to album"}))
 }
 
+const deleteCardFromAlbum = (req , res) => {
+    db.none('DELETE FROM albums WHERE user_id = ${user_id} AND api_number = ${api_id}', req.body)
+    .then(()=>res.json({msg:"successfully removed card from album"}))
+    .catch(err=>res.json({err, msg:"failed delete from album"}))
+}
+
+
 
 
 
 module.exports = {
     getUsersCards,
     receviedCard,
-    updateCardInAlbum
+    updateCardInAlbum,
+    deleteCardFromAlbum
 }

@@ -120,11 +120,16 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
 
         if(fav) ctrl.mouseOverCard.favorite = !ctrl.mouseOverCard.favorite;
 
-        ctrl.yourCards.forEach(card => {
-            if(card.api_id === ctrl.mouseOverCard.api_id) card = ctrl.mouseOverCard
-        })
-
-        ctrl.updateAlbum(ctrl.mouseOverCard)
+        if(ctrl.mouseOverCard.ammount > 0){
+            ctrl.yourCards.forEach(card => {
+                if(card.api_id === ctrl.mouseOverCard.api_id) card = ctrl.mouseOverCard
+            })
+    
+            ctrl.updateAlbum(ctrl.mouseOverCard)
+        }
+        else{
+            ctrl.deleteCard(ctrl.mouseOverCard)
+        }
     }
     
 
@@ -217,7 +222,9 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     // ================================== //
     this.sendCardToBackend = function(card, user){
         $http({method: 'POST', url: '/cards', data:{card, user}})
-        .then(data => console.log(data.data))
+        .then(data => {
+            // console.log(data.data)
+        })
         .catch(err => console.log(err))
     }
 
@@ -226,7 +233,24 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     // ================================== //
     this.updateAlbum = function(card){
         $http({method: 'PUT', url: '/cards', data: card})
-        .then(data => console.log(data))
+        .then(data => {
+            // console.log(data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    // ================================== //
+    //      Delete Card From Album        //
+    // ================================== //
+    this.deleteCard = function(card){
+        $http({method: 'DELETE', url: '/cards', data: card})
+        .then(data => {
+            console.log(data)
+            for(let i = 0; i < ctrl.yourCards.length; i++){
+                if(ctrl.yourCards[i].api_id === card.api_id) ctrl.yourCards.splice(i, 1)
+            }
+            ctrl.cardLock = false;
+        })
         .catch(err => console.log(err))
     }
 
