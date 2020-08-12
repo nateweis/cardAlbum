@@ -51,11 +51,14 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.filterSelected = function(){
         const ar = [];
         const radio = this.radioBtnVal
+        
+
         if(radio === 'S' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: [...ar, 'Spell Card']})
         if(radio === 'T' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'type', val: [...ar, 'Trap Card']})
         if(radio === 'M' && this.filterArr.length === 0)ctrl.filterArr.push({key: 'atk', val: [...ar, true]})
-        if(radio === 'X') ctrl.filterArr.push({"key":"return","val":"all"})
+        if(radio === 'X' && !this.favCards) ctrl.filterArr.push({"key":"return","val":"all"})
         
+        if(this.favCards) ctrl.filterArr.push({"key": 'favorite', "val": [...ar, true]})
    
         this.filter = this.filterArr;
         this.resetFilter();
@@ -87,12 +90,14 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
 
     }
 
+
     this.resetFilter = function(){
         this.filterArr = [];
         this.inputVal = {};
         this.radioBtnVal = 'X'
         this.whichMenu = 'filter'; 
         this.doTheSlide = false;
+        this.favCards = false;
     }
 
     // card details when hover over card
