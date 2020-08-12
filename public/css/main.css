@@ -271,16 +271,17 @@ hr{
   padding: 1rem;
   overflow: hidden;
   color: var(--text-color);
+  
 }
 .extended{
-  width: 800px;
+  width: 100%;
   
 }
 #submit{
   font-size: 24px;
   font-weight: bold;
   display: inline-block;
-  width: 95%;
+  width: 99%;
   padding-top: 20px;
   margin: auto;
   text-align: center;

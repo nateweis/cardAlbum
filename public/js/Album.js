@@ -110,6 +110,8 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
         ctrl.includePath = `partials/${path}.html`;
         ctrl.mouseOverCard = {};
         ctrl.cardLock = false;
+        ctrl.filterMenu = false;
+        ctrl.resetFilter();
     }
 
     // ================================== //
