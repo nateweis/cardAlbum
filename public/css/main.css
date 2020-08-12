@@ -220,6 +220,9 @@ hr{
   width: 100px;
   height: 150px;
 }
+.fill_in{
+  background-color: green;
+}
 
 /* ************************** 
       Filter Dropdown 

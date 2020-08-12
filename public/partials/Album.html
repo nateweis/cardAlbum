@@ -5,12 +5,14 @@
     <div class="card-container">
 
         <div class="detail-window">
-            <img ng-if="album.mouseOverCard.api_id" ng-src="{{album.mouseOverCard.card_images[0]}}" alt="{{album.mouseOverCard.name}}">
             <span ng-if="album.cardLock">
-                <button>-</button>
-                <span><i class="{{album.mouseOverCard.favotite? 'fas fa-star' : 'far fa-star'}}"></i></span>
-                <button>+</button>
+                <button ng-click="album.lockedCardOptions(false, false)">-</button>
+                <span ng-click="album.lockedCardOptions(null, true)"><i class="{{album.mouseOverCard.favorite? 'fas' : 'far'}} fa-star"></i></span>
+                <button ng-click="album.lockedCardOptions(true, false)">+</button>
             </span>
+
+            <img ng-if="album.mouseOverCard.api_id" ng-src="{{album.mouseOverCard.card_images[0]}}" alt="{{album.mouseOverCard.name}}">
+            
         </div>
 
         <div class="card-box">

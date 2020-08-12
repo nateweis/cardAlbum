@@ -27,6 +27,11 @@
                     <!-- rdo btn -->
                     <span>
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
+                            <input type="checkbox" ng-model="album.inputVal['favorite']" ng-change="album.checkChange('favorite', 'favorite')">
+                            Favorite Cards
+                        </label>
+                        <hr>
+                        <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             All Cards
                             <input type="radio" value="X" ng-model="album.radioBtnVal" ng-click="album.switchCardType()">
                         </label>

@@ -99,12 +99,28 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.mouseOverCard = {};
     this.getCardDetails = card => {
         if(!ctrl.cardLock) ctrl.mouseOverCard = card;
-        if(ctrl.cardLock) console.log(ctrl.mouseOverCard)
+        // if(ctrl.cardLock) console.log(ctrl.mouseOverCard)
     }
 
     // lock card when clicked
     this.cardLock = false;
     this.changeCardlock = () => ctrl.cardLock = !ctrl.cardLock
+
+    // click the add/remove/fav btn
+    this.lockedCardOptions = function(add, fav){
+        if(add !== null){
+            if(add) ctrl.mouseOverCard.ammount++ ;
+            else ctrl.mouseOverCard.ammount-- ;
+        }
+
+        if(fav) ctrl.mouseOverCard.favorite = !ctrl.mouseOverCard.favorite;
+
+        ctrl.yourCards.forEach(card => {
+            if(card.api_id === ctrl.mouseOverCard.api_id) card = ctrl.mouseOverCard
+        })
+
+        ctrl.updateAlbum(ctrl.mouseOverCard)
+    }
     
 
     // nav bar click

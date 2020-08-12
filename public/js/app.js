@@ -27,6 +27,7 @@ app.filter('cardFilter', function() {
                     }
                     else if (f.key === 'atk' && (card[f.key] !== null && card[f.key] !== undefined)){temp.push(card)} //then cheking if its the 'all monsters' case
                     else if(card[f.key] === v) temp.push(card) //pushing eveything else to temp arr
+                    else if(f.key === 'favorite' && card[f.key] === true) temp.push(card)
                 })
             })
             filterDown = temp //whatever meets the peramiters is now the new arr to filter through then we filter again
