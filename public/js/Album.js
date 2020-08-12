@@ -17,6 +17,12 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     this.secondMenuClass = 'slide_in_left';
     this.whichMenu = 'filter'; 
 
+    this.sortOption = 'rarity';
+    this.changeSort = (str) => {
+        ctrl.sortOption = str;
+        ctrl.changeFilterMenu()
+    }
+
     this.changeFilterMenu = () => {
         ctrl.filterMenu = !ctrl.filterMenu
         if(ctrl.filterMenu === false) this.resetFilter()
@@ -154,6 +160,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
             }
         });
         if(addCard){
+            const cardRarity = card.card_sets[0].set_rarity_code === '(SP)'? '(C)': card.card_sets[0].set_rarity_code;
             const newCard = {
                 atk: card.atk || null,
                 attribute: card.attribute || null,
@@ -165,7 +172,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
                 name: card.name,
                 race: card.race,
                 type: card.type,
-                rarity: card.card_sets[0].set_rarity_code,
+                rarity: cardRarity,
                 user_id: user,
                 favorite: false,
                 ammount : 1

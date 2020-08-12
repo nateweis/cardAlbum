@@ -270,10 +270,11 @@ hr{
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
+  color: var(--text-color);
 }
 .extended{
   width: 800px;
-  color: var(--text-color);
+  
 }
 #submit{
   font-size: 24px;
