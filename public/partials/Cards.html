@@ -10,7 +10,7 @@
 
         <div class="card-box">
             <div class="card" 
-             ng-repeat="card in album.allCards | cardFilter : album.filter | orderBy: album.sortOption : !album.reverseSort" 
+             ng-repeat="card in album.allCards | cardFilter : album.filter | orderBy: album.sortOption : !album.reverseSort | filter: album.cardSearch" 
              ng-mouseover="album.getCardDetails(card)" ng-click="album.addCardToAlbum(card, auth.currentUser.id)"> 
                 <img class="card-img" ng-src="{{card.card_images[0].image_url_small}}" alt={{card.name}}> 
             </div>

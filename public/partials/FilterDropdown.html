@@ -1,6 +1,7 @@
 <div class="dropdown-container">
     <ul class="dropdown"> 
         <li class="dropdown-item"> 
+            <input type="text" placeholder="card search" ng-model="album.cardSearch.name">
             <a class="dropdown-btn" ng-click="album.changeFilterMenu()" href=""><i class="arrow"></i></a>
             <div class="dropdown-menu {{album.radioBtnVal === 'M'? ' extended' : ''}}" ng-if="album.filterMenu">
                 <!-- Main Menu -->
