@@ -3,8 +3,8 @@ const options = {
     promiseLib : promise
 }
 const pgp = require('pg-promise')( options);
-// const connectionString = process.env.DATABASE_URL || 'postgres://postgres:root@localhost:5432/card_app';
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:uspumpdatabase@localhost:5432/card_app';
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:root@localhost:5432/card_app';
+// const connectionString = process.env.DATABASE_URL || 'postgres://postgres:uspumpdatabase@localhost:5432/card_app';
 const db = pgp(connectionString);
 db.connect();
 
