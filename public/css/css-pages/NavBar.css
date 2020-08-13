@@ -6,6 +6,7 @@
     background-color: var(--bg);
     padding: 0 1rem;
     border-bottom: var(--border);
+    
   }
   .navbar{
     max-width: 100%;
@@ -21,7 +22,7 @@
   }
   
   .nav-link{
-    width: calc(var(--nav-size) * 1.5);
+    width: calc(var(--nav-size) * 1.9);
     background-color: var(--bg-accent);
     border-radius: 5%;
     padding: 5px;

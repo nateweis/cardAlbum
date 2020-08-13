@@ -1,11 +1,11 @@
 <div ng-include="'partials/FilterDropdown.html'"></div>
 
-<h3>Your Album</h3>
+<h3 class="header">Your Album</h3>
 <div ng-if="album.yourCards.length > 0">
     <div class="card-container">
 
         <div class="detail-window">
-            <span ng-if="album.cardLock">
+            <span class="album-buttons-container" ng-if="album.cardLock">
                 <button ng-click="album.lockedCardOptions(false, false)">-</button>
                 <span ng-click="album.lockedCardOptions(null, true)"><i class="{{album.mouseOverCard.favorite? 'fas' : 'far'}} fa-star"></i></span>
                 <button ng-click="album.lockedCardOptions(true, false)">+</button>
@@ -20,8 +20,9 @@
              ng-repeat="card in album.yourCards | cardFilter : album.filter | orderBy: album.sortOption : !album.reverseSort | filter: album.cardSearch" 
              ng-mousemove="album.getCardDetails(card)" 
              ng-click="album.changeCardlock()"> 
-                <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}>{{card.ammount}} 
-            </div class="card">
+                <img class="card-img" ng-src="{{card.card_images[1]}}" alt={{card.name}}>
+                <span class="card-amount">{{card.ammount}} </span>
+            </div>
         </div>
         
     </div>
