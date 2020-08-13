@@ -183,6 +183,10 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     //        Add to Your Cards           //
     // ================================== //
     this.addCardToAlbum = function(card, user){
+        this.addCardAnimation = 'animate_card';
+        setTimeout(() => {ctrl.addCardAnimation = '';},500)
+        
+
         let addCard = true;
         this.yourCards.forEach(c => {
             if(c.api_id === card.id){

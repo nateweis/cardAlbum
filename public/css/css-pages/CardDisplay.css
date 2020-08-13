@@ -37,4 +37,22 @@
     background-color: green;
   }
   
-  
+.animate_card{
+    opacity: 0;
+    animation: save_card 500ms linear;
+}
+
+@keyframes save_card{
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50%{
+        transform:translateY(500px) scale(.2);
+        opacity: .8;
+    }
+    100%{
+        transform: translateY(1000px) scale(.1);
+        opacity: 0.1;
+    }
+}

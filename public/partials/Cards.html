@@ -5,7 +5,8 @@
     <div class="card-container">
 
         <div class="detail-window">
-            <img ng-if="album.mouseOverCard.id" ng-src="{{album.mouseOverCard.card_images[0].image_url}}" alt={{album.mouseOverCard.name}}>
+            <img class="{{album.addCardAnimation}}"
+            ng-if="album.mouseOverCard.id" ng-src="{{album.mouseOverCard.card_images[0].image_url}}" alt={{album.mouseOverCard.name}}>
         </div>
 
         <div class="card-box">
