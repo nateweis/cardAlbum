@@ -3,37 +3,49 @@
 ...........................*/
 .home-container{
     height: 100vh;
-    background-image: linear-gradient(to bottom right, rgb(94, 56, 13)0%, rgb(26, 20, 20) 15%, rgb(26, 20, 20) 75%, rgb(94, 56, 13) 100%);
 }
-.home-container div{
+.home-container .home-link-outer{
     width: 50%;
     height: 100%;
     cursor: pointer;
     color: rgb(218, 218, 218);
     position: relative;
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .home-container .home-left-link{
     float: left;
+    background-image: url('../../images/slifer_background.jpg');
     
 }
 .home-container .home-right-link{
     float: right;
-    
+    background-image: url('../../images/wingeddragon_background.jpg');
 }
+.dark-cover-home{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  z-index: 1;
+  transition: all .2s ease;
+} 
 
-.home-container div:hover{
-    background-color: rgba(200,200,200,.1);
+.dark-cover-home:hover{
+    background-color:  rgba(0, 0, 0, .7);
 }
-.home-container div span{
+.dark-cover-home span{
     display: inline-block;
-    padding: 15px;
+    padding: 25px;
+    font-size: 28px;
     margin-top: 30%;
     position: relative;
     transition: all .5 ease-in-out;
 }
 
-.home-container div span::before{
+.dark-cover-home span::before{
     content: '';
     position: absolute;
     top: 0;
@@ -46,7 +58,7 @@
     transition: all .2 ease-in-out;
 }
 
-.home-container div span::after{
+.dark-cover-home span::after{
     content: '';
     position: absolute;
     top: 0;
@@ -59,11 +71,11 @@
     transition: all .2 ease-in-out;
 }
 
-.home-container div:hover span::before{
+.dark-cover-home:hover span::before{
     animation: border .5s linear forwards; 
 }
 
-.home-container div:hover span::after{
+.dark-cover-home:hover span::after{
     animation: border2 .5s linear forwards; 
 }
 

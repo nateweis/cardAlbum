@@ -21,14 +21,21 @@
 
       <span ng-if="!auth.currentUser.id" >
         <div class="login-container">
-          <div ng-click="auth.changeLoginType(false)">Creat Account</div>
-          <div ng-click="auth.changeLoginType(true)">Log In</div>
+          <div class="dark-cover"></div>
 
-          <input type="text" ng-model="auth.username" placeholder="Username">
-          <input type='password' ng-model="auth.password" placeholder="Password">
-          
-          <button ng-if="!auth.logInScreen" ng-click="auth.createAccount()" >Sign Up</button>
-          <button ng-if="auth.logInScreen" ng-click="auth.changeLoggin()" >Log In</button>
+          <div class="login-box">
+            <div class="select-container">
+              <div class="select-login {{auth.logInScreen? '' : 'selected_left'}}" ng-click="auth.changeLoginType(false)">Creat Account</div>
+              <div class="select-login {{auth.logInScreen? 'selected_right' : ''}}" ng-click="auth.changeLoginType(true)">Log In</div>
+            </div>
+
+            <div class="login-textbox"><input type="text" ng-model="auth.username" placeholder=" Username"></div>
+            <div class="login-textbox"><input type='password' ng-model="auth.password" placeholder=" Password"></div>
+            
+            
+            <button ng-if="!auth.logInScreen" ng-click="auth.createAccount()" >Sign Up</button>
+            <button ng-if="auth.logInScreen" ng-click="auth.changeLoggin()" >Log In</button>
+          </div>
 
         </div>
       </span>

@@ -1,4 +1,5 @@
 @import './css-pages/General.css';
+@import './css-pages/Login.css';
 @import './css-pages/Landing.css';
 @import './css-pages/NavBar.css';
 @import './css-pages/DropdownFilter.css';
