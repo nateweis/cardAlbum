@@ -1,0 +1,122 @@
+/* ************************** 
+        Landing Page
+...........................*/
+.home-container{
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(94, 56, 13)0%, rgb(26, 20, 20) 15%, rgb(26, 20, 20) 75%, rgb(94, 56, 13) 100%);
+}
+.home-container div{
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    color: rgb(218, 218, 218);
+    position: relative;
+    text-align: center;
+}
+.home-container .home-left-link{
+    float: left;
+    
+}
+.home-container .home-right-link{
+    float: right;
+    
+}
+
+.home-container div:hover{
+    background-color: rgba(200,200,200,.1);
+}
+.home-container div span{
+    display: inline-block;
+    padding: 15px;
+    margin-top: 30%;
+    position: relative;
+    transition: all .5 ease-in-out;
+}
+
+.home-container div span::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    transition: all .2 ease-in-out;
+}
+
+.home-container div span::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    transition: all .2 ease-in-out;
+}
+
+.home-container div:hover span::before{
+    animation: border .5s linear forwards; 
+}
+
+.home-container div:hover span::after{
+    animation: border2 .5s linear forwards; 
+}
+
+@keyframes border{
+    0%{
+      width: 0;
+      height: 0;
+      border-top-color: rgb(218, 218, 218);
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    50%{
+      width: 100%;
+      height: 0;
+      border-top-color: rgb(218, 218, 218);
+      border-right-color: rgb(218, 218, 218);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    100%{
+      width: 100%;
+      height: 100%;
+      border-top-color: rgb(218, 218, 218);
+      border-right-color: rgb(218, 218, 218);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  @keyframes border2{
+    0%{
+      width: 0;
+      height: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: rgb(218, 218, 218);
+    }
+    50%{
+      width: 0;
+      height: 100%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color:rgb(218, 218, 218);
+      border-left-color: rgb(218, 218, 218);
+    }
+    100%{
+      width: 100%;
+      height: 100%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: rgb(218, 218, 218);
+      border-left-color: rgb(218, 218, 218);
+    }
+  }

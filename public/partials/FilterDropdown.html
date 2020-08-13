@@ -31,7 +31,7 @@
                             <input type="checkbox" ng-model="album.favCards">
                             Favorite Cards
                         </label>
-                        <hr>
+                        <hr class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                         <label class="{{album.doTheSlide? album.secondMenuClass : 'start_out' }}">
                             All Cards
                             <input type="radio" value="X" ng-model="album.radioBtnVal" ng-click="album.switchCardType()">
