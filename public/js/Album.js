@@ -243,7 +243,7 @@ export const album =  ['$http', '$rootScope', function($http, $rootScope){
     //      Delete Card From Album        //
     // ================================== //
     this.deleteCard = function(card){
-        $http({method: 'DELETE', url: '/cards', data: card})
+        $http({method: 'DELETE', url: `/cards/${card.user_id}&${card.api_id}`})
         .then(data => {
             console.log(data)
             for(let i = 0; i < ctrl.yourCards.length; i++){

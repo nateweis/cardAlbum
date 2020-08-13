@@ -59,7 +59,11 @@ const updateCardInAlbum = (req, res) => {
 }
 
 const deleteCardFromAlbum = (req , res) => {
-    db.none('DELETE FROM albums WHERE user_id = ${user_id} AND api_number = ${api_id}', req.body)
+    const ids = req.params.id.split('&')
+    ids[0] = parseInt(ids[0])
+    ids[1] = parseInt(ids[1])
+    
+    db.none('DELETE FROM albums WHERE user_id = $1 AND api_number = $2', ids)
     .then(()=>res.json({msg:"successfully removed card from album"}))
     .catch(err=>res.json({err, msg:"failed delete from album"}))
 }

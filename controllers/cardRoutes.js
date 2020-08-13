@@ -5,6 +5,6 @@ const Cards = require('../models/cards')
 router.get('/', Cards.getUsersCards)
 router.post('/', Cards.receviedCard)
 router.put('/', Cards.updateCardInAlbum)
-router.delete('/', Cards.deleteCardFromAlbum)
+router.delete('/:id', Cards.deleteCardFromAlbum)
 
 module.exports = router
